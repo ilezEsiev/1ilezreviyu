@@ -7,8 +7,8 @@ import (
 )
 
 func main() {
-	// Примеры вызова функций
-	int8MaxValues, int16MaxValues, int32MaxValues, int64MaxValues := getIntMaxValue(0, 0, 0, 0)
+
+	int8MaxValues, int16MaxValues, int32MaxValues, int64MaxValues := getIntMaxValue(1, 0, 0, 0)
 	fmt.Println("Max Int Values:", int8MaxValues, int16MaxValues, int32MaxValues, int64MaxValues)
 
 	uint8MaxValues, uint16MaxValues, uint32MaxValues, uint64MaxValues := getUintMaxValue(0, 0, 0, 0)
@@ -20,6 +20,7 @@ func main() {
 	fmt.Println(a)
 }
 
+// как я понял эта функция возврашает количество ботов для каждого типа
 func getIntMaxValue(in8 int8, in16 int16, in32 int32, in64 int64) (int8, int16, int32, int64) {
 	maxInt8 := int8(1<<getBits(in8) - 1)
 	maxInt16 := int16(1<<getBits(in16) - 1)
@@ -43,8 +44,8 @@ func getIntMaxValue(in8 int8, in16 int16, in32 int32, in64 int64) (int8, int16, 
 }
 
 func getUintMaxValue(uin8 uint8, uin16 uint16, uin32 uint32, uin64 uint64) (uint8, uint16, uint32, uint64) {
-	maxUint8 := uint8(1<<getBits(uin8) - 1)
-	maxUint16 := uint16(1<<getBits(uin16) - 1)
+	maxUint8 := uint8(1<<getBits(uin8) - 1)    // тут мы делаем сдвиг на 8 битов получается 128 и отнимаем 1 получается 127
+	maxUint16 := uint16(1<<getBits(uin16) - 1) // тут мы делаем сдвиг на 16 битов ...
 	maxUint32 := uint32(1<<getBits(uin32) - 1)
 	maxUint64 := uint64(1<<getBits(uin64) - 1)
 
